@@ -1,19 +1,23 @@
-
-
 <template>
-  <hello-world msg="合同申请流程" ref="a" a="哈哈" :list ="personList"/>
+    <h2 ref="title2">你好</h2>
+    <button @click="showLog">测试</button>
+  <div>
+  </div>
+  <hello-world msg="合同申请流程" ref="a"/>
 </template>
 
 <script setup lang="ts">
 import HelloWorld from './components/HelloWorld.vue'
-import {reactive} from 'vue'
-import { type Persons } from "./types"
+  import {ref} from 'vue'
 
-let personList = reactive<Persons>([
-    {id:'asudfysafd01',name:'张三',age:18},
-    {id:'asudfysafd02',name:'李四',age:20},
-    {id:'asudfysaf)d03',name:'王五',age:22}
-  ])
+var title = ref()
+ var a = ref()
+function showLog(){
+  debugger
+     console.log(title.value)
+     a.value.updateMessage("hah");
+    //console.log(ren.value)
+  }
 </script>
 <style scoped>
 .logo {

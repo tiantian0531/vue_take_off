@@ -3,7 +3,6 @@
     <h1>当前求和为:{{ sum }}</h1>
     <H3>当前求和为:{{ calcSum }}</H3>
     <H3>我在{{ where }} 学习{{ doWhat }}</H3>
-    <h3>总人数为:{{ personList.length }}</h3>
     <select v-model.number="number">
       <option value="1">1</option>
       <option value="2">2</option>
@@ -31,10 +30,10 @@ export default {
   },
   computed: {
     // ...mapState({ sum: 'sum', where: 'where', doWhat: 'doWhat' }),
-    ...mapState('a', ['sum', 'where', 'doWhat']),
-    ...mapState('b', ['personList']),
+    ...mapState(['sum', 'where', 'doWhat']),
+
     // ...mapGetters({ calcSum: 'calcSum' })
-    ...mapGetters('a', ['calcSum'])
+    ...mapGetters(['calcSum'])
 
   },
   methods: {
@@ -46,7 +45,7 @@ export default {
     //   // 没有业务逻辑直接在组建commit
     //   this.$store.commit('SUB', this.number)
     // },
-    ...mapMutations('a', { incremment: 'ADD', decremment: 'SUB' }),
+    ...mapMutations({ incremment: 'ADD', decremment: 'SUB' }),
     // ...mapMutations([ 'ADD','SUB']),
 
 
@@ -56,7 +55,7 @@ export default {
     // incremmentWait() {
     //   this.$store.dispatch('incremmentwait', this.number)
     // }
-    ...mapActions('a', { odd: 'oddincremment', incremmentWait: 'incremmentwait' })
+    ...mapActions({ odd: 'oddincremment', incremmentWait: 'incremmentwait' })
   },
   mounted() {
 

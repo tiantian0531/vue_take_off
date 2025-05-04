@@ -31,10 +31,10 @@ export default {
   },
   computed: {
     // ...mapState({ sum: 'sum', where: 'where', doWhat: 'doWhat' }),
-    ...mapState('a', ['sum', 'where', 'doWhat']),
-    ...mapState('b', ['personList']),
+    ...mapState(['sum', 'where', 'doWhat', 'personList']),
+
     // ...mapGetters({ calcSum: 'calcSum' })
-    ...mapGetters('a', ['calcSum'])
+    ...mapGetters(['calcSum'])
 
   },
   methods: {
@@ -46,7 +46,7 @@ export default {
     //   // 没有业务逻辑直接在组建commit
     //   this.$store.commit('SUB', this.number)
     // },
-    ...mapMutations('a', { incremment: 'ADD', decremment: 'SUB' }),
+    ...mapMutations({ incremment: 'ADD', decremment: 'SUB' }),
     // ...mapMutations([ 'ADD','SUB']),
 
 
@@ -56,7 +56,7 @@ export default {
     // incremmentWait() {
     //   this.$store.dispatch('incremmentwait', this.number)
     // }
-    ...mapActions('a', { odd: 'oddincremment', incremmentWait: 'incremmentwait' })
+    ...mapActions({ odd: 'oddincremment', incremmentWait: 'incremmentwait' })
   },
   mounted() {
 

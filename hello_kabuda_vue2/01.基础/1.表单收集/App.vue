@@ -28,9 +28,8 @@
       其他信息：
       <textarea v-model.lazy="userInfo.other"></textarea> <br /><br />
       <input type="checkbox" v-model="userInfo.agree">阅读并接受<a href="http://www.atguigu.com">《用户协议》</a>
-      <button v-pre>提交</button>
+      <button>提交</button>
     </form>
-    <div v-text="flag"></div>
   </div>
 
 </template>
@@ -56,8 +55,7 @@ export default {
         city: 'beijing',
         other: '',
         agree: ''
-      },
-      flag: '<h2>1</h2>'
+      }
 
     }
 

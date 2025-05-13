@@ -1,19 +1,22 @@
 <template>
     <li>
         <label>
-            <input type="checkbox" :checked="todo.done" />
+            <input type="checkbox" :checked="todo.done" @change="handleCheck(todo.id)" />
             <span>{{ todo.title }}</span>
         </label>
-        <button class="btn btn-danger">完成</button>
+        <button class="btn btn-danger" click="">完成</button>
     </li>
 </template>
 
 <script>
 export default {
     name: 'MyItem',
-    props: ['todo'],
+        props: ['todo','checkTodo'],
     methods: {
-
+        handleCheck(id) {
+            debugger
+            this.checkTodo(id)
+        }
     },
     computed: {
 

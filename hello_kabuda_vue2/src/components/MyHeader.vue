@@ -25,7 +25,8 @@ export default {
                 title: this.title,
                 done: false
             }
-            this.addTodoItem(item);
+            this.$emit("addTodo", item)
+            //this.addTodoItem(item);
         }
     },
 }

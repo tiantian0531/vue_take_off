@@ -2,8 +2,8 @@
     <div id="root">
         <div class="todo-container">
             <div class="todo-wrap">
-                <MyHeader :addTodoItem="addTodoItem" />
-                <MyList :todos="todos" />
+                <MyHeader :addTodoItem="addTodoItem"  @addTodo ="addTodoItem"/>
+                <MyList :todos="todos"  :checkTodo="checkTodo"  />
                 <MyFooter :todos="todos" />
             </div>
         </div>
@@ -28,8 +28,13 @@ export default {
     methods: {
         addTodoItem(item) {
             this.todos.unshift(item);
+        },
+        checkTodo() {
+            this.todos.forEach((todo) => {
+                if (todo.id === id) todo.done = !todo.done
+                console.log(todo)
+            })
         }
-
     },
     mounted() {
         console.log('App', this)

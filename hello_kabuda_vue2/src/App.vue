@@ -19,10 +19,13 @@ export default {
     components: { MyHeader, MyList, MyFooter },
     data() {
         return {
-            todos: [
-                { id: '001', title: '工作', done: true },
-                { id: '002', title: '学习', done: false },
-                { id: '003', title: '开车', done: true }]
+            // todos: [
+            // { id: '001', title: '工作', done: true },
+            // { id: '002', title: '学习', done: false },
+            // { id: '003', title: '开车', done: true }
+            // ]
+
+            todos: JSON.parse(localStorage.getItem('todos')) || []
         }
     },
     methods: {
@@ -55,9 +58,19 @@ export default {
             })
         }
     },
+    watch: {
+        todos: {
+            deep: true,
+            handler(value) {
+                localStorage.setItem('todos', JSON.stringify(value))
+            }
+        }
+
+    },
     mounted() {
         console.log('App', this)
-    }
+    },
+
 }
 </script>
 

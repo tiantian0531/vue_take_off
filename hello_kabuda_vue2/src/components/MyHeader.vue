@@ -26,7 +26,6 @@ export default {
                 done: false
             }
             this.$emit("addTodo", item)
-            //this.addTodoItem(item);
         }
     },
 }

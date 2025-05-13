@@ -1,41 +1,50 @@
 <template>
     <div class="todo-header">
-        <input type="text" placeholder="11" />
+        <input type="text" placeholder="鍒跺畾涓�涓换鍔¤鍒掑惂.." v-model="title" @keyup.enter="addTodo" />
     </div>
 </template>
 
 
 <script>
-    export default {
-        name: 'MyHeader',
-        //接收从App传递过来的addTodo
-
-        data() {
-            return {
-                //收集用户输入的title
-                title: ''
+import { nanoid } from 'nanoid'
+export default {
+    name: 'MyHeader',
+    props: ["addTodoItem"],
+    data() {
+        return {
+            title: ''
+        }
+    },
+    methods: {
+        addTodo() {
+            if (!this.title.trim()) {
+                return alert('杈撳叆涓嶈兘涓虹┖')
             }
-        },
-        methods: {
-
-        },
-    }
+            const item = {
+                id: nanoid(),
+                title: this.title,
+                done: false
+            }
+            this.addTodoItem(item);
+        }
+    },
+}
 </script>
 
 <style scoped>
-    /*header*/
-    .todo-header input {
-        width: 560px;
-        height: 28px;
-        font-size: 14px;
-        border: 1px solid #ccc;
-        border-radius: 4px;
-        padding: 4px 7px;
-    }
+/*header*/
+.todo-header input {
+    width: 560px;
+    height: 28px;
+    font-size: 14px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    padding: 4px 7px;
+}
 
-        .todo-header input:focus {
-            outline: none;
-            border-color: rgba(82, 168, 236, 0.8);
-            box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075), 0 0 8px rgba(82, 168, 236, 0.6);
-        }
+.todo-header input:focus {
+    outline: none;
+    border-color: rgba(82, 168, 236, 0.8);
+    box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075), 0 0 8px rgba(82, 168, 236, 0.6);
+}
 </style>

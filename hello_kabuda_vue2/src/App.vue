@@ -2,9 +2,9 @@
     <div id="root">
         <div class="todo-container">
             <div class="todo-wrap">
-                <MyHeader :addTodoItem="addTodoItem"  @addTodo ="addTodoItem"/>
-                <MyList :todos="todos"  :checkTodo="checkTodo"  />
-                <MyFooter :todos="todos" />
+                <MyHeader :addTodoItem="addTodoItem" @addTodo="addTodoItem" />
+                <MyList :todos="todos" :checkTodo="checkTodo" :delTodo="delTodo" />
+                <MyFooter :todos="todos" :allTodo="allTodo" :clearAllTodo="clearAllTodo" />
             </div>
         </div>
     </div>
@@ -26,13 +26,32 @@ export default {
         }
     },
     methods: {
+        // 添加todo
         addTodoItem(item) {
             this.todos.unshift(item);
         },
-        checkTodo() {
+        // 选择todo 
+        checkTodo(id) {
             this.todos.forEach((todo) => {
-                if (todo.id === id) todo.done = !todo.done
-                console.log(todo)
+                if (todo.id === id) {
+                    todo.done = !todo.done
+                    console.log(todo)
+                }
+            })
+        },
+        // 删除todo 
+        delTodo(id) {
+            this.todos = this.todos.filter(todo => todo.id !== id)
+        },
+        allTodo(done) {
+            this.todos.forEach((todo) => {
+                todo.done = done
+            })
+        },
+        clearAllTodo() {
+
+            this.todos = this.todos.filter((todo) => {
+                return !todo.done
             })
         }
     },

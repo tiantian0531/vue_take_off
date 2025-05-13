@@ -2,20 +2,25 @@
     <li>
         <label>
             <input type="checkbox" :checked="todo.done" @change="handleCheck(todo.id)" />
+            <!-- 不建议直接改props传入的数据,如果值类型就会报错,引用的可以实现 -->
+            <!-- <input type="checkbox" v-model="todo.done" /> -->
             <span>{{ todo.title }}</span>
         </label>
-        <button class="btn btn-danger" click="">完成</button>
+        <button class="btn btn-danger" @click="handleDel(todo.id)">删除</button>
     </li>
 </template>
 
 <script>
 export default {
     name: 'MyItem',
-        props: ['todo','checkTodo'],
+    props: ['todo', 'checkTodo', 'delTodo'],
     methods: {
         handleCheck(id) {
             debugger
             this.checkTodo(id)
+        },
+        handleDel(id) {
+            this.delTodo(id)
         }
     },
     computed: {

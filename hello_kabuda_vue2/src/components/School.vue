@@ -1,9 +1,9 @@
 <template>
-	<div class="school">
-		<h2>学校名称：{{name}}</h2>
-		<h2>学校地址：{{address}}</h2>
-		<button @click="sendSchoolName">把学校名给App</button>
-	</div>
+    <div class="school">
+        <h2>学校名称：{{name}}</h2>
+        <h2>学校地址：{{address}}</h2>
+        <button @click="sendSchoolName">把学校名给App</button>
+    </div>
 </template>
 
 <script>
@@ -17,16 +17,19 @@
 			}
 		},
 		methods: {
-			sendSchoolName(){
-				this.getSchoolName("sa")
-			}
+
+		},
+		mounted() {
+			this.$bus.on("hello",(data)=>{
+				console.log("收到了数据",data)
+			})
 		},
 	}
 </script>
 
 <style scoped>
-	.school{
-		background-color: skyblue;
-		padding: 5px;
-	}
+    .school {
+        background-color: skyblue;
+        padding: 5px;
+    }
 </style>
